@@ -1,0 +1,26 @@
+{
+  "name": "mushicave1.github.io",
+  "version": "1.0.0",
+  "description": "My personal website that showcases my hobbyist projects as a full time software engineer.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mushicave1/mushicave1.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mushicave1/mushicave1.github.io/issues"
+  },
+  "homepage": "https://github.com/mushicave1/mushicave1.github.io#readme",
+  "dependencies": {
+    "three": "^0.178.0",
+    "vite": "^7.0.4"
+  }
+}
