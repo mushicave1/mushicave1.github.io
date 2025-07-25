@@ -13,30 +13,28 @@ class Application {
             1,
             100
         )
-        this.camera.position.set(0, 0, 30)
+        this.camera.position.set(0, 0, 20)
 
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
 
         this.scene = new THREE.Scene()
 
         const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.1)
-        const light = new THREE.PointLight(0xFFFFFF, 1000.0, 0, 2.0)
+        const light = new THREE.PointLight(0xFFFFFF, 400.0, 0, 2.0)
         light.position.set(10, 10, 10)
         this.scene.add(light)
         this.scene.add(ambientLight)
 
 
-        const geo = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10)
+        const geo = new THREE.BoxGeometry(7, 5, 0.1, 10, 10, 10)
         const mat = new THREE.MeshStandardMaterial({ color: "red"})
-
-        for (let i = -window.innerWidth/2; i < window.innerWidth/2; i+=(window.innerWidth/10)) {
-            for (let j = -window.innerHeight/2; j < window.innerHeight/2; j+=(window.innerHeight/10)) {
-                const mesh = new THREE.Mesh(geo, mat)
-                mesh.position.x = (i / 50); 
-                mesh.position.y = (j / 50);
-                this.scene.add(mesh)
-            }
+        for (let i = -5; i < 5; ++i) {
+            const mesh = new THREE.Mesh(geo, mat)
+            mesh.rotation.y = 20
+            mesh.position.x = i*2
+            this.scene.add(mesh)
         }
+
 
         window.addEventListener("resize", this.onResize)
 
