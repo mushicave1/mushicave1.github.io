@@ -1,21 +1,43 @@
 import * as THREE from "three"
-import { OrbitControls } from "three/addons/controls/OrbitControls.js"
+
+const experiences = [
+    { name: "c++" },
+    { name: "go" },
+    { name: "ts" },
+    { name: "react" },
+    { name: "bazel" },
+    { name: "vulkan" },
+    { name: "image-processing" },
+    { name: "server" },
+    { name: "yocto-linux" },
+    { name: "qt" },
+    { name: "c#" },
+    { name: "wpf-gui" },
+    { name: "visual-studio" },
+    { name: "cmake" },
+    { name: "directX" },
+    { name: "networking" },
+    { name: "scripting" },
+    { name: "swift" },
+    { name: "metal" },
+    { name: "xcode" },
+    { name: "c" },
+    { name: "makefile" },
+    { name: "cpu-graphics-pipeline" },
+    { name: "cpu-raytracing" },
+    { name: "rust" },
+    { name: "stm32" }
+]
+
 
 class Application {
     constructor() {
         let canvas = document.getElementById("gl-canvas")
         this.renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true})
+        this.renderer.setClearColor(new THREE.Color(0x138f63), 1.0)
         this.renderer.setSize(window.innerWidth, window.innerHeight)
 
-        this.camera = new THREE.PerspectiveCamera(
-            50,
-            window.innerWidth / window.innerHeight,
-            1,
-            100
-        )
-        this.camera.position.set(0, 0, 20)
-
-        this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+        this.camera = new THREE.OrthographicCamera(0, window.innerWidth, 0, window.innerHeight, 0.1, 10)
 
         this.scene = new THREE.Scene()
 
@@ -24,17 +46,21 @@ class Application {
         light.position.set(10, 10, 10)
         this.scene.add(light)
         this.scene.add(ambientLight)
-
-
-        const geo = new THREE.BoxGeometry(7, 5, 0.1, 10, 10, 10)
+        const geo = new THREE.BoxGeometry(50, 50, 50)
         const mat = new THREE.MeshStandardMaterial({ color: "red"})
-        for (let i = -5; i < 5; ++i) {
+
+        let projectsContainer = document.getElementById("projects-container")
+        for (const [i, xp] of experiences.entries()) {
+            const exp = document.createElement("div")
+            exp.className = "xp"
+            exp.textContent = xp.name
+            projectsContainer.appendChild(exp)
+
             const mesh = new THREE.Mesh(geo, mat)
-            mesh.rotation.y = 20
-            mesh.position.x = i*2
+            mesh.position.x = i * 20
+            mesh.position.y = i * 20
             this.scene.add(mesh)
         }
-
 
         window.addEventListener("resize", this.onResize)
 
@@ -48,7 +74,6 @@ class Application {
     }
 
     process = () => {
-        this.controls.update()
         this.renderer.render(this.scene, this.camera)
         window.requestAnimationFrame(this.process)
     }
