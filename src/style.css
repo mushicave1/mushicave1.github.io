@@ -1,6 +1,8 @@
 body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 
@@ -14,7 +16,7 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-#projects-container {
+#home-container {
     position: absolute;
     display: flex;
     justify-content: left;
@@ -27,12 +29,23 @@ body {
     row-gap: 5vw;
 }
 
-.xp {
-    background-color: rgb(22, 103, 170);
-    width: 10vw;
-    height: 10vh;
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    place-items: center;
+#home-container-upper {
+    width: 100vw;
+    height: 30vh;
+}
+
+#home-container-middle {
+    width: 100vw;
+    height: 30vh;
+}
+
+#home-container-lower {
+    width: 100vw;
+    height: 20vh;
+}
+
+#home-container-lower h1 {
+    margin-left: 5vw;
+    color: rgb(47, 184, 166);
+    font-family: Arial, Helvetica, sans-serif;
 }
