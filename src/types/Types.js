@@ -1,4 +1,7 @@
-const experiences = [
+
+
+
+export const experiences = [
     { name: "react", color: 'blue'},
     { name: "bazel", color: 'blue'},
     { name: "vulkan", color: 'blue'},
@@ -18,5 +21,3 @@ const experiences = [
     { name: "stm32", color: 'orange'},
     { name: "threejs", color: 'hotpink'},
 ]
-
-export default experiences
